@@ -1,0 +1,11 @@
+{
+    "editor.wordWrapColumn": 80,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.rulers": [
+        80
+    ],
+    "editor.tabSize": 4,
+    "editor.useTabStops": true,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": true
+}
