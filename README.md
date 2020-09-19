@@ -46,7 +46,6 @@ This project implements a simple mis program to store relations between loadbala
                 }
             ]
         }
-
    ```
 
    ```
@@ -80,3 +79,39 @@ This project implements a simple mis program to store relations between loadbala
 | 1k | 474.38µs | 3.39ms | 644.876µs |
 | 100k | 32.92ms  | 3.60ms  | 20.93ms  |
 | 1m | 254.96ms  | 3.08ms  | 177.78ms  |
+
+## DevOps
+
+Run `go build .` to build the binary, `go mod` will handle the dependencies.
+```
+$ go build . 
+
+or # or CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" .
+```
+
+If it prompts error message like
+```
+# github.com/mattn/go-sqlite3
+exec: "gcc": executable file not found in $PATH
+```
+
+You need to install gcc
+
+```
+$ yum install -y gcc
+```
+
+The binary `lbmis` has some dependencies:
+
+```
+# ldd lbmis
+	linux-vdso.so.1 =>  (0x00007ffda3bb5000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007f4f2c976000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007f4f2c75a000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007f4f2c38b000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f4f2cb81000)
+```
+
+However, they are common .so files available for all linux platforms.
+
+
